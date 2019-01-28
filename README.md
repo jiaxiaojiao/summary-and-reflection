@@ -4,6 +4,7 @@
 
 ### 软件
 #### 团队协作软件
-confluence
+
+[confluence](/software/confluence.md)
 
 
