@@ -6,7 +6,7 @@
 
 单向链表：单向链表是最简单、最基础的链表，它的一个结点（node）分两部分，第一部分存储结点的数据信息（data），第二部分存储指向下一结点的地址（next）信息。最后一个结点（链尾）指向一个空地址（null）。单向链表一般只在链表表头（链头）结点的位置插入元素，这样每次新加入的元素都会在链头位置，而最先加入的元素会在链尾位置。删除操作时，如果在链头位置删除，只需要把头结点指向其下一个结点即可；如果是在中间位置删除，只需要将其前一个结点指向其下一个结点即可。单向链表示意图如下图所示：
     
-![image](LinkedListOnePoint.png)
+![image](../images/LinkedListOnePoint.png)
 
 单向链表的Java代码实现：
 ```java
@@ -230,7 +230,7 @@ public class LinkedListToStack {
 
 双端链表：双端链表和单向链表大体上是一样的，不同的是，单向链表在表尾部分插入元素时，需要从头结点一直遍历到尾结点才能进行插入操作，这样难免有些繁琐。因此如果加入一个对尾结点的引用，这样就可以很方便地在尾结点进行插入操作，这就是双端链表。除了有一个头结点（head），还有一个尾结点（tail）。注意它和后面双向链表的区别！
 
-![image](LinkedListTwoPoint.png)
+![image](../images/LinkedListTwoPoint.png)
 
 双端链表的Java代码实现: 
 ```java
@@ -588,7 +588,7 @@ public class LinkedListInOrder {
 ```
 
 双向链表：前面的几种链表只能从头结点遍历到尾结点这一个方向，每个结点都只能指向其下一个结点。而双向链表的每个结点既能指向下一个结点，又能指向前一个结点，双向链表既能从头结点向尾结点遍历，又能从尾结点向头结点遍历，既有一个头结点，又有一个尾结点。
-![image](LinkedListTwoDirections.png)
+![image](../images/LinkedListTwoDirections.png)
 双向链表的Java代码实现：
 ```java
 /*

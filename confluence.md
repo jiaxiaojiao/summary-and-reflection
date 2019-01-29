@@ -1,4 +1,4 @@
-# confluence
+# confluence 团队协作软件
 用途:
 - 技术博客
 - 发送文章

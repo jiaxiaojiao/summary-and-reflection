@@ -136,3 +136,9 @@ maven 坐标能够确定一个项目。用Maven坐标来解决依赖关系。在
     </dependency> 
 
 ```
+
+- Maven重要指令
+- clean complie test package install deploy
+- Nexus服务搭建
+- Nexus仓库管理
+- Nexus使用 上传 配置
