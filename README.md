@@ -12,6 +12,6 @@ README.md
 ### 软件
 #### 团队协作软件
 
-[confluence](/software/confluence.md)
+[confluence](/confluence.md)
 
 
