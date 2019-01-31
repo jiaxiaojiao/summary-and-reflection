@@ -14,3 +14,7 @@ Nginx高并发分流
 - Nginx+Tomcat动静分离架构
 - Nginx+Keepalived集群架构
 - Nginx+Keepalived双主架构
+
+
+- Nginx的配置，设计，构架
+- 负载均衡的实现原理

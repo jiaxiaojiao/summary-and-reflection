@@ -13,6 +13,10 @@ Git是一款开源分布式版本控制系统。
 命令： https://git-scm.com/docs 
 下载： https://git-scm.com/downloads
 
+可视化工具：
+tortoisegit.org
+download.tortoisegit.org/tgit
+
 Git与SVN的区别：
 1. Git是分布式版本控制系统
    SVN是集中式版本控制系统

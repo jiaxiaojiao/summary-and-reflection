@@ -39,3 +39,14 @@ Mybatis功能架构分为三层：
 - SQL语句依赖于数据库，导致数据库移植性差，不能更换数据库。 
 - 框架还是比较简陋，功能尚有缺失，虽然简化了数据绑定代码，但是整个底层数据库查询实际还是要自己写的，工作量也比较大，而且不太容易适应快速数据库修改。 
 - 二级缓存机制不佳
+
+#### mybatis是如何管理session和cache的
+
+- MyBatis3简介
+- MyBatis3 SqlMap哪些事儿
+- 数据库连接池
+- MyBatis3 SessionFactory实现原理
+- MyBatis3 配置文件详解
+- MyBatis3 事务管理与集成
+- 浅谈Hibernate
+- MyBatis3 与 Hibernate框架对比

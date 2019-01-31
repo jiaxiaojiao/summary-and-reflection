@@ -21,3 +21,5 @@ config | ServletConfig | 当前JSP的配置对象
 out | JspWriter | 输出流对象
 page | Object | 当前JSP/Servlet对象，没有实际意义
 exception | Throwble | 异常对象 必须设置当前JSP isErrorPage=true
+
+#### JSP/Servlet

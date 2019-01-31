@@ -15,3 +15,14 @@ AOP
 - AOP源码分析：ProxyFactory源码解析，AOPProxy源码解析（JDKDynamicAOPProxy，Cglib2AOPProxy），拦截与织入（advice源码分析，Interceptor源码分析）
 - Transaction事务分析：事务的基础，Spring对事务的支持，源码分析
 - Spring Cache框架源码分析
+
+
+#### spring里面有哪些你熟悉的设计模式，你怎么理解和应用的
+
+- Spring的发展背景简介
+- Spring IOC/DI 深入剖析
+- Spring IOC容器设计原理及高级特性
+- Spring AOP设计原理及实践
+- Spring JDBC设计原理及手写实现
+- Spring MVC架构设计原理及手写实现
+- Struts2与Spring MVC的比较
