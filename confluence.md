@@ -1,5 +1,4 @@
-# confluence 团队协作软件
-![image](./images/Confluence-blue.svg)
+# confluence 团队协作软件 ![image](./images/Confluence-blue.svg)
 
 
 - [confluence官网](https://www.atlassian.com/software/confluence)
