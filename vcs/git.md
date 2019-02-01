@@ -12,6 +12,7 @@ Git是一款开源分布式版本控制系统。
 每个Git工作目录是一个带有完整历史记录和版本信息的仓库，不依赖于网络和中央服务器。
 命令： https://git-scm.com/docs 
 下载： https://git-scm.com/downloads
+https://git-scm.com/book/zh/v2
 
 可视化工具：
 tortoisegit.org
