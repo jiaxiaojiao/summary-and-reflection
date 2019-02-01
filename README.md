@@ -8,6 +8,5 @@
 ```
 
 ## 软件
-#### 团队协作软件
-[confluence](/confluence.md)  
+- [confluence](/confluence.md)  是一个专业的企业知识管理和协同软件。也可以构建企业wiki。
 
