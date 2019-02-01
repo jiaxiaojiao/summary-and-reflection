@@ -1,4 +1,4 @@
-# confluence 团队协作软件 ![image](./images/Confluence-blue.svg)
+# confluence 团队协作软件
 
 
 - [confluence官网](https://www.atlassian.com/software/confluence)
@@ -39,3 +39,6 @@ team, and your company do their best work together
     Labels（标签）| 显示附加到当前页面的标签（或标记）。（或者按“L“）
     Add a Comment（添加一条评论） | 在文本框中点击，开始写一条评论。（或按“M”）
 
+
+
+![image](./images/Confluence-blue.svg)
