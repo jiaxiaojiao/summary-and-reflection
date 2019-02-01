@@ -68,6 +68,6 @@ $ git init
 2. 如果执行失败，就按照提示还原有冲突的文件，然后再次尝试同步。（git checkout -- <有冲突的文件路径>）
 3. 同步到服务器。（git puch origin <本地分支名>）
 ```
-![Git版本库](git.png)
+![Git版本库](../images/git.png)
 
 

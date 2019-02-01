@@ -8,6 +8,25 @@
 ```
 
 
+## Java
+
+## Spring
+- Spring
+- Spring MVC
+- Spring Boot
+- Spring Cloud
+
+## Database 数据库
+- RDBMS 关系型数据库（MySQL、ORACLE、SQLServer、MariaDB、SQLite、PostgreSQL）
+- NoSql 非关系型数据库（Redis、MongoDB）
+
+## IDE 集成开发环境
+- Eclipse
+- IntelliJ IDEA
+
+## VCS 版本控制系统
+- Git
+- SVN
 
 ## 软件
 - [confluence](/confluence.md)  是一个专业的企业知识管理和协同软件。也可以构建企业wiki。
