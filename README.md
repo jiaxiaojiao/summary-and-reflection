@@ -13,3 +13,6 @@
 - [confluence](/confluence.md)  是一个专业的企业知识管理和协同软件。也可以构建企业wiki。
 
 ## [收藏的网站](/website.md)
+
+## 其他
+- [常用的编程语言](/language.md)（Java Python C C++等）
