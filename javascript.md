@@ -38,3 +38,6 @@ ECMAScript是一种语言标准，JavaScript是网景公司对ECMAScript标准�
 <c:if test="${!empty XX }">
 </c:if>
 ```
+
+## 拓展
+[ECharts](/echarts.md) 使用 JavaScript 实现的开源可视化库
