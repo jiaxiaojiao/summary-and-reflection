@@ -42,7 +42,7 @@ public class T implements Comparable<T>{
     }
 
 	@Override
-	public int compareTo(LineChartData o) {
+	public int compareTo(T o) {
 		return this.date.compareTo(o.date); // 升序
 	}
 	// getter setter
