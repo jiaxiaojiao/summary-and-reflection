@@ -49,11 +49,15 @@ public class T implements Comparable<T>{
 }
 ```
 ### 2. 重写Comparator方法
-```text
-......
-TreeSet<T> ts = new TreeSet<T>(new Comparator<T>() {
-    @Override
-    public int compare(T o1, T o2) {
-        return o2.getDate().compareTo(o1.getDate());降序
+```java
+public class Test{
+    public static void testM(){
+        TreeSet<T> ts = new TreeSet<T>(new Comparator<T>() {
+            @Override
+            public int compare(T o1, T o2) {
+                return o2.getDate().compareTo(o1.getDate());// 降序
+            }
+        }); 
     }
+}
 ```
