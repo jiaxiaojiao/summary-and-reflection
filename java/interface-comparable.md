@@ -40,12 +40,12 @@ public class T implements Comparable<T>{
         this.date = date;
         this.value = value;
     }
-
-	@Override
-	public int compareTo(T o) {
+    
+    @Override
+    public int compareTo(T o) {
         return this.date.compareTo(o.date); // 升序
-	}
-	// getter setter
+    }
+    // getter setter
 }
 ```
 ### 2. 重写Comparator方法
