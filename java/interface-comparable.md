@@ -5,11 +5,15 @@
     实现此接口的对象列表（和数组）可以通过 Collections.sort（和 Arrays.sort）进行自动排序。
     实现此接口的对象可以用作有序映射中的键或有序集合中的元素，无需指定比较器。
     
-    对于类 C(Collections) 的每一个 e1 (Element)和 e2 来说，当且仅当 e1.compareTo(e2) == 0 与 e1.equals(e2) 具有相同的 boolean 值时，类 C 的自然排序才叫做与 equals 一致。注意，null 不是任何类的实例，即使 e.equals(null) 返回 false，e.compareTo(null) 也将抛出 NullPointerException。
+    对于类 C(Collections) 的每一个 e1 (Element)和 e2 来说，
+    当且仅当 e1.compareTo(e2) == 0 与 e1.equals(e2) 具有相同的 boolean 值时，类 C 的自然排序才叫做与 equals 一致。
+    注意，null 不是任何类的实例，即使 e.equals(null) 返回 false，e.compareTo(null) 也将抛出 NullPointerException。
 
-Comparable接口只提供了一个抽象方法：
-如果该对象小于、等于或大于指定对象，则分别返回负整数、零或正整数。 
-根据不同类的实现返回不同，大部分返回1,0和-1三个数
+## 方法
+    Comparable接口只提供了一个抽象方法：
+    
+    如果该对象小于、等于或大于指定对象，则分别返回负整数、零或正整数。
+    根据不同类的实现返回不同，大部分返回1,0和-1三个数
 
 返回值 | 方法 | 描述
 ---|---|---
