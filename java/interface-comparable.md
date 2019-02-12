@@ -19,11 +19,13 @@
 ---|---|---
 int | compareTo(T o) | 比较此对象与指定对象的顺序。<br>o为要比较的对象
 
-- 实现类必须确保对于所有的 x 和 y 都存在 sgn(x.compareTo(y)) == -sgn(y.compareTo(x)) 的关系。（这意味着如果 y.compareTo(x) 抛出一个异常，则 x.compareTo(y) 也要抛出一个异常。）
-- 实现类还必须确保关系是可传递的：(x.compareTo(y)>0 && y.compareTo(z)>0) 意味着 x.compareTo(z)>0。
-- 最后，实现者必须确保 x.compareTo(y)==0 意味着对于所有的 z，都存在 sgn(x.compareTo(z)) == sgn(y.compareTo(z))。 强烈推荐 (x.compareTo(y)==0) == (x.equals(y)) 这种做法，但并不是 严格要求这样做。一般来说，任何实现 Comparable 接口和违背此条件的类都应该清楚地指出这一事实。推荐如此阐述：“注意：此类具有与 equals 不一致的自然排序。”
+## 要求
+1. 实现类必须确保对于所有的 x 和 y 都存在 sgn(x.compareTo(y)) == -sgn(y.compareTo(x)) 的关系。（这意味着如果 y.compareTo(x) 抛出一个异常，则 x.compareTo(y) 也要抛出一个异常。）
+2. 实现类还必须确保关系是可传递的：(x.compareTo(y)>0 && y.compareTo(z)>0) 意味着 x.compareTo(z)>0。
+3. 最后，实现者必须确保 x.compareTo(y)==0 意味着对于所有的 z，都存在 sgn(x.compareTo(z)) == sgn(y.compareTo(z))。 强烈推荐 (x.compareTo(y)==0) == (x.equals(y)) 这种做法，但并不是 严格要求这样做。一般来说，任何实现 Comparable 接口和违背此条件的类都应该清楚地指出这一事实。推荐如此阐述：“注意：此类具有与 equals 不一致的自然排序。”
 
 在前面的描述中，符号 sgn(expression) 指定 signum 数学函数，该函数根据 expression 的值是负数、零还是正数，分别返回 -1、0 或 1 中的一个值。
+
 
 ## 排序的两种方式
 ### 1. 实现接口Comparable
