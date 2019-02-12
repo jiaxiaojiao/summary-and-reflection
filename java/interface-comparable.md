@@ -18,6 +18,11 @@
 返回值 | 方法 | 描述
 ---|---|---
 int | compareTo(T o) | 比较此对象与指定对象的顺序。<br>o为要比较的对象
+```java
+public interface Comparable<T> {
+    public int compareTo(T o);
+}
+```
 
 ## 要求
 1. 实现类必须确保对于所有的 x 和 y 都存在 sgn(x.compareTo(y)) == -sgn(y.compareTo(x)) 的关系。（这意味着如果 y.compareTo(x) 抛出一个异常，则 x.compareTo(y) 也要抛出一个异常。）
