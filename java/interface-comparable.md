@@ -1,6 +1,11 @@
 # 接口-Comparable
-此接口强行对实现它的每个类的对象进行整体排序。这种排序被称为类的自然排序，类的 compareTo 方法被称为它的自然比较方法。实现此接口的对象列表（和数组）可以通过 Collections.sort（和 Arrays.sort）进行自动排序。实现此接口的对象可以用作有序映射中的键或有序集合中的元素，无需指定比较器。
-对于类 C(Collections) 的每一个 e1 (Element)和 e2 来说，当且仅当 e1.compareTo(e2) == 0 与 e1.equals(e2) 具有相同的 boolean 值时，类 C 的自然排序才叫做与 equals 一致。注意，null 不是任何类的实例，即使 e.equals(null) 返回 false，e.compareTo(null) 也将抛出 NullPointerException。
+## 描述
+    此接口强行对实现它的每个类的对象进行整体排序。
+    这种排序被称为类的自然排序，类的 compareTo 方法被称为它的自然比较方法。
+    实现此接口的对象列表（和数组）可以通过 Collections.sort（和 Arrays.sort）进行自动排序。
+    实现此接口的对象可以用作有序映射中的键或有序集合中的元素，无需指定比较器。
+    
+    对于类 C(Collections) 的每一个 e1 (Element)和 e2 来说，当且仅当 e1.compareTo(e2) == 0 与 e1.equals(e2) 具有相同的 boolean 值时，类 C 的自然排序才叫做与 equals 一致。注意，null 不是任何类的实例，即使 e.equals(null) 返回 false，e.compareTo(null) 也将抛出 NullPointerException。
 
 Comparable接口只提供了一个抽象方法：
 如果该对象小于、等于或大于指定对象，则分别返回负整数、零或正整数。 
