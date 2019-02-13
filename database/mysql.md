@@ -16,36 +16,51 @@
     唯一索引 UNIQUE：所有值唯一，值可以为空
     普通索引 INDEX：基本的索引类型，值可以为空
     全文索引 FULLTEXT：可以在varchar、char、text类型的列上创建。全文索引不支持中文需要借sphinx(coreseek)或迅搜<、code>技术处理中文
+    
+    索引的命名，一般是 表名_索引名
+    索引会降低写的速度。
 ```
 #### 查看表中已经存在的索引
 ```sql
 mysql> show index from table_name ;
 ```
 #### MySQL添加索引命令
-1. 主键索引 PRIMARY KEY
+- 主键索引 PRIMARY KEY
 ```sql
 mysql>ALTER TABLE `table_name` ADD PRIMARY KEY (`column`) 
 ```
-2. 唯一索引 UNIQUE
+- 唯一索引 UNIQUE
 ```sql
 create UNIQUE index index_name on table_name (`column`) ;
 -- 或者
 mysql>ALTER TABLE `table_name` ADD UNIQUE (`column`)
 ```
-3. 普通索引 INDEX
+- 普通索引 INDEX
 ```sql
 create INDEX index_name on table_name (`column`) ;
 -- 或者
 mysql>ALTER TABLE `table_name` ADD INDEX index_name (`column`)
 ```
-4. 全文索引 FULLTEXT
+- 全文索引 FULLTEXT
 ```sql
 mysql>ALTER TABLE `table_name` ADD FULLTEXT (`column`)
 ```
-5. 多列索引
+- 多列索引/联合索引/复合索引
+```text
+    1. 最左原则： MySQL从左到右的使用索引中的字段。 如果最左字段没有使用，那联合索引没有作用。
+    
+    2. 多个单列索引在多条件查询时只会生效第一个索引！所以多条件联合查询时最好建联合索引！
+    
+    3. 如果联合索引和单列索引同时存在（字段有重复），MySQL查询优化器策略，当一个表有多条索引可走时, Mysql 根据查询语句的成本来选择走哪条索引。
+    
+    4. 联合索引本质：
+    当创建(a,b,c)联合索引时，相当于创建了(a)单列索引，(a,b)联合索引以及(a,b,c)联合索引 
+    想要索引生效的话,只能使用 a和a,b和a,b,c三种组合。
+```
 ```sql
 mysql>ALTER TABLE `table_name` ADD INDEX index_name (`column1`, `column2`, `column3`)
 ```
+
 
 #### 删除索引
 ```sql
@@ -73,8 +88,20 @@ alter table table_name drop primary key ; -- 一个表只可能有一个PRIMARY 
 
 创建索引的条件：
 - 肯定在where条经常使用
+- 如果where条件中是OR关系，加索引不起作用
 - 该字段的内容不是唯一的几个值
 - 字段内容不是频繁变化。
+- 联合索引比对每个列分别建索引更有优势，因为索引建立得越多就越占磁盘空间，在更新数据的时候速度会更慢。另外建立多列索引时，顺序也是需要注意的，应该将严格的索引放在前面，这样筛选的力度会更大，效率更高
+
+
+
+### explain
+```text
+    explain 显示了mysql如何使用索引来处理select语句以及连接表。
+    可以帮助选择更好的索引和写出更优化的查询语句。
+```
+
+
 
 ---
 #### 常见的参数设置
