@@ -11,9 +11,9 @@
 ## Java
 
 ## Spring
-- Spring
+- [Spring](./spring/spring.md) 最流行的应用程序开发框架之一： AOP IOC(DI)
 - Spring MVC
-- [Spring Boot](./spring/spring-boot.md)
+- [Spring Boot](./spring/spring-boot.md) 开发基于REST的微服务Web应用程序的最快方法之一
 - Spring Cloud
 
 ## Database 数据库
