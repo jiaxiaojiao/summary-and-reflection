@@ -23,3 +23,8 @@ page | Object | 当前JSP/Servlet对象，没有实际意义
 exception | Throwble | 异常对象 必须设置当前JSP isErrorPage=true
 
 #### JSP/Servlet
+
+
+
+#### 传值
+- [页面向后端传值](./java/byval.md)
