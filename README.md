@@ -36,6 +36,10 @@
 - Git
 - SVN
 
+## 协议/架构风格
+- SOAP（Simple Object Access Protocol） 简单对象访问协议
+- [REST（Representational State Transfer 表述性状态传递）](/rest.md)
+
 ## 软件
 - [confluence](/confluence.md)  是一个专业的企业知识管理和协同软件。也可以构建企业wiki。
 - [CHM Editor](/chmeditor.md)  CHM编辑器
