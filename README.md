@@ -31,7 +31,7 @@
 - IntelliJ IDEA
 
 ## [VCS 版本控制系统](./vcs/vcs.md)
-- Git
+- [**Git**](./vcs/git.md)
 - SVN
 
 ## 软件
