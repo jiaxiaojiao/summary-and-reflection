@@ -49,11 +49,13 @@
     - MongoDB
 
 
-## IDE 集成开发环境
+## [IDE 集成开发环境](./ide/ide.md)
 
 - Eclipse
 
-- IntelliJ IDEA
+- [IntelliJ IDEA](./ide/idea.md)  
+
+> JetBrains 公司的产品。
 
 
 
