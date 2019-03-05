@@ -3,15 +3,22 @@
 
 > MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录。
 
-## Mybatis安装
+## 安装
+
 - [Mybatis安装](./mybatis-install.md)
+
+## 使用
 
 - [Mybatis中like语句的使用方式](./mybatis-like.md)
 
-## Mybatis架构
+- [XML文件中的大于小于等于](./mybatis-xml.md)
+
+## 架构
+
 - [Mybatis功能架构](./mybatis-architecture.md)
 
-## MyBatis优缺点
+## 优缺点
+
 - [Mybatis的优点和缺点](./mybatis-advantages.md )
 
 
