@@ -26,3 +26,26 @@ File > Settings.../快捷键 Ctrl+Alt+S > Appearance & Behavior > Appearance
 - [插件的安装、启动和卸载](./idea-plugins.md) 
 
 - [插件的使用-MyBatis Generator](./idea-plugins-mybatis.md)
+
+
+## 版本控制
+
+- 忽略特定文件和文件夹
+
+```text
+ 步骤：
+ Version Control > 
+ Local Changes > 
+ Show Ignored Files > 
+ Configure Ignored Files > 
+ Ignored Unversioned Files : 
+ Ignored specified file 
+ Ignored all files under
+ Ignored all files matching 
+
+```
+
+
+
+
+ 
