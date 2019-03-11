@@ -26,11 +26,11 @@
 - [MyBatis](./mybatis.md)
 
 
-## Database 数据库
+## [Database 数据库](/database/database.md)
 
 - RDBMS 关系型数据库
 
-    - [MySQL](./database/mysql.md)  Oracle旗下产品，最流行的关系型数据库管理系统之一
+    - [MySQL](/database/mysql.md)  Oracle旗下产品，最流行的关系型数据库管理系统之一
 
     - ORACLE
 
