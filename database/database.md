@@ -154,7 +154,7 @@
 
 > Open ModelSphere是一个强大的数据，流程和UML建模工具。
 
-#### MySQL Workbench
+#### [MySQL Workbench](/database/mysql-workbench.md)
 
 > 官网： [www.mysql.com](https://www.mysql.com/products/workbench/)
 > <br> 官方出的设计工具。For MySQL
