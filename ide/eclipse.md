@@ -5,6 +5,11 @@
     鼠标右键单击项目，然后选择【Configure】 > 【Convert to Maven Projects…】。
     此时项目图标的左上角会出现一个M字样
     
+#### svn 忽略不需要提交的文件
+```text
+选择【window】 > 【Preferences】 > 【Team】 > 【Ignored Resources】 > 【Add Pattern】
+```    
+    
 #### 快捷键（Windows）
 ```text
 Ctrl + D    删除当前行
