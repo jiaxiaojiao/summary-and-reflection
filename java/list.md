@@ -19,7 +19,7 @@ String[] s = {"a","b","c"};
 List list = java.util.Arrays.asList(s);
 ```
 
-### 打乱顺序
+### 打乱顺序/随机排序
 
 ```text
 Collections.shuffle(list);
