@@ -1,9 +1,10 @@
 # MySQL
-```text
-    MySQL 是一个关系型数据库管理系统。
-    由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。
-    最流行的关系型数据库管理系统之一。
-```
+
+> MySQL 是一个关系型数据库管理系统。
+> 由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。
+> 最流行的关系型数据库管理系统之一。
+
+官网： https://www.mysql.com
 
 ## MySQL 基础
 
