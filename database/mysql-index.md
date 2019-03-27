@@ -3,86 +3,109 @@
 ```text
     索引相当于图书馆的目录，可以快速找到需要的内容。
     
-    索引的类型：
-    主键索引 PRIMARY KEY：是一种唯一性的索引，每个表只能有一个主键。
-    唯一索引 UNIQUE：所有值唯一，值可以为空
-    普通索引 INDEX：基本的索引类型，值可以为空
-    全文索引 FULLTEXT：可以在varchar、char、text类型的列上创建。全文索引不支持中文需要借sphinx(coreseek)或迅搜<、code>技术处理中文
-    
-    索引的命名，一般是 表名_索引名
-    索引会降低写的速度。
 ```
 
-## 创建和删除索引
+## 索引的类型
+
+- 主键索引 PRIMARY KEY：是一种唯一性的索引，每个表只能有一个主键。
+- 唯一索引 UNIQUE：所有值唯一，值可以为空
+- 普通索引 INDEX：基本的索引类型，值可以为空
+- 全文索引 FULLTEXT：可以在varchar、char、text类型的列上创建。全文索引不支持中文需要借sphinx(coreseek)或迅搜<、code>技术处理中文
+
+## 索引的命名
+命名规则： 表明_字段名
+
+```text
+  'table_name'_'column'
+```
+
+## 创建、查看和删除索引
 在执行Create Table语句时可以创建索引，也可以单独用Create Index或Alter table来为表增加索引。
 
-### 查看表中已经存在的索引
+#### 创建表的时候，直接创建索引。基本的语法格式：
+
+```sql
+    CREATE TABLE 表名(字段名 数据类型 [完整性约束条件],
+                      [UNIQUE | FULLTEXT | SPATIAL] INDEX | KEY
+                      [索引名](字段名1 [(长度)] [ASC | DESC])
+    ); 
+```
+- UNIQUE： 可选。表示索引为唯一性索引。
+- FULLTEXT： 可选。表示索引为全文索引。
+- SPATIAL： 可选。表示索引为空间索引。
+- INDEX和KEY： 用于指定字段为索引，两者选择其中之一就可以了，作用是一样的。
+- 索引名： 可选。给创建的索引取一个新名称。
+- 字段名1： 指定索引对应的字段的名称，该字段必须是前面定义好的字段。
+- 长度： 可选。指索引的长度，必须是字符串类型才可以使用。
+- ASC： 可选。表示升序排列。
+- DESC： 可选。表示降序排列。
+
+
+#### 查看表中已经存在的索引
 
 ```sql
 mysql> show index from table_name ;
 ```
 
-### MySQL添加索引命令
+#### MySQL添加索引
 
-- 主键索引 PRIMARY KEY
+##### **主键索引 PRIMARY KEY**
 
 ```sql
 mysql>ALTER TABLE `table_name` ADD PRIMARY KEY (`column`) 
 ```
 
-- 唯一索引 UNIQUE
+##### **唯一索引 UNIQUE**
 
-索引列的值必须唯一，允许有空值。
-1. 简化MySQL对这个索引的管理工作，这个索引也因此变得更有效率；
-2. MySQL会在有新记录插入数据表的时候，自动检查新记录的这个字段的值是否已经在某个记录上的这个字段中出现过了。如果是，MySQL将拒绝插入这条新纪录。也就是说，唯一索引可以保证数据记录的唯一性。事实上，在许多场合，创建唯一索引的目的往往不是为了提高访问速度，而是为了避免数据出现重复。
+> 索引列的值必须唯一，允许有空值。
+> 1. 简化MySQL对这个索引的管理工作，这个索引也因此变得更有效率；
+> 2. MySQL会在有新记录插入数据表的时候，自动检查新记录的这个字段的值是否已经在某个记录上的这个字段中出现过了。如果是，MySQL将拒绝插入这条新纪录。也就是说，唯一索引可以保证数据记录的唯一性。事实上，在许多场合，创建唯一索引的目的往往不是为了提高访问速度，而是为了避免数据出现重复。
+
 ```sql
 create UNIQUE index index_name on table_name (`column`) ;
 -- 或者
 mysql>ALTER TABLE `table_name` ADD UNIQUE (`column`)
+
 ```
 
-- 普通索引 INDEX
+##### **普通索引 INDEX**
 
-由关键字key或index定义的索引，唯一的任务是加快对数据的访问速度。因此，应该只为那些最经常出现在查询条件（where ...） 或 排序条件（order by ...）中的数据库列创建索引。
+> 由关键字key或index定义的索引，唯一的任务是加快对数据的访问速度。因此，应该只为那些最经常出现在查询条件（where ...） 或 排序条件（order by ...）中的数据库列创建索引。
+
 ```sql
 
 create INDEX index_name on table_name (`column`) ;
 
 -- 或者
 mysql>ALTER TABLE `table_name` ADD INDEX index_name (`column`)
+
 ```
 
-- 全文索引 FULLTEXT
+##### **全文索引 FULLTEXT**
 
-MySQL从3.23.23版本开始全面支持全文索引和全文检索。fulltext索引仅可用于MyISAM表。
+> MySQL从3.23.23版本开始全面支持全文索引和全文检索。fulltext索引仅可用于MyISAM表。
+
 ```sql
 mysql>ALTER TABLE `table_name` ADD FULLTEXT (`column`)
+
 ```
 
-- 多列索引/联合索引/复合索引
+##### **多列索引/联合索引/复合索引**
 
-```text
-    命名规则： 表明_字段名
-```
-
-```text
-    1. 最左原则： MySQL从左到右的使用索引中的字段。 如果最左字段没有使用，那联合索引没有作用。
-    
-    2. 每次查询只能使用一个索引，多个单列索引在多条件查询时只会生效第一个索引！所以多条件联合查询时最好建联合索引！
-    
-    3. 如果联合索引和单列索引同时存在（字段有重复），MySQL查询优化器策略，当一个表有多条索引可走时, Mysql 根据查询语句的成本来选择走哪条索引。
-    
-    4. 联合索引本质：
-    当创建(a,b,c)联合索引时，相当于创建了(a)单列索引，(a,b)联合索引以及(a,b,c)联合索引 
-    想要索引生效的话,只能使用 a和a,b和a,b,c三种组合。
-```
+>  1. 最左原则： MySQL从左到右的使用索引中的字段。 如果最左字段没有使用，那联合索引没有作用。
+>  2. 每次查询只能使用一个索引，多个单列索引在多条件查询时只会生效第一个索引！所以多条件联合查询时最好建联合索引！
+>  3. 如果联合索引和单列索引同时存在（字段有重复），MySQL查询优化器策略，当一个表有多条索引可走时, Mysql 根据查询语句的成本来选择走哪条索引。
+>  4. 联合索引本质：
+>    当创建(a,b,c)联合索引时，相当于创建了(a)单列索引，(a,b)联合索引以及(a,b,c)联合索引 
+>    想要索引生效的话,只能使用 a和a,b和a,b,c三种组合。
 
 ```sql
 mysql>ALTER TABLE `table_name` ADD INDEX index_name (`column1`, `column2`, `column3`)
+
 ```
 
 
-### 删除索引
+#### 删除索引
 
 ```sql
 drop index index_name on table_name ;
@@ -91,9 +114,11 @@ drop index index_name on table_name ;
 alter table table_name drop index index_name ;
 
 alter table table_name drop primary key ; -- 一个表只可能有一个PRIMARY KEY索引，因此不需要指定索引名
+
 ```
 
 ## 索引的机制
+
 1. 为什么我们添加完索引后查询速度为变快？
     传统的查询方法，是按照表的顺序遍历的，不论查询几条数据，mysql需要将表的数据从头到尾遍历一遍。
     在我们添加完索引之后，mysql一般通过BTREE算法生成一个索引文件，在查询数据库时，找到索引文件进行遍历(折半查找大幅查询效率)，找到相应的键从而获取数据。
@@ -120,13 +145,13 @@ alter table table_name drop primary key ; -- 一个表只可能有一个PRIMARY 
 
 ## 索引的注意事项和优化方法
 
-### 索引不会包含NULL值的列
+#### 索引不会包含NULL值的列
 只要列中包含NULL值将不会被包含在索引里，复合索引中只要有一列含有NULL值，那么这一列对于此复合索引就是无效的。
 
-### 索引列排序
+#### 索引列排序
 MySQL查询只使用一个索引，如果where中已经使用了索引，order by 中的列是不会使用索引的。
 
-### like语句操作
+#### like语句操作
 一般情况下不鼓励使用like。
 like "%XX%" 不会使用索引，like "XX%" 可以使用索引。
 
@@ -136,7 +161,7 @@ like "%XX%" 不会使用索引，like "XX%" 可以使用索引。
   理论上每张表的索引最多可创建16个索引。 
 ```
 
-### key和index的区别
+#### key和index的区别
 > key 是数据库的物理结构，它包含两层意义，一是约束（偏重于约束和规范数据库的结构完整性），二是索引（辅助查询用的）。
 包括primary key, unique key, foreign key 等。
 
