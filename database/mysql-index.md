@@ -130,16 +130,38 @@ MySQL查询只使用一个索引，如果where中已经使用了索引，order b
 一般情况下不鼓励使用like。
 like "%XX%" 不会使用索引，like "XX%" 可以使用索引。
 
-
 ```text
   MySQL 只对 (<, <=, =, >, >=, between, in, 不以通配符%或_开头的like) 才使用索引。
   
   理论上每张表的索引最多可创建16个索引。 
 ```
 
+### key和index的区别
+> key 是数据库的物理结构，它包含两层意义，一是约束（偏重于约束和规范数据库的结构完整性），二是索引（辅助查询用的）。
+包括primary key, unique key, foreign key 等。
+
+```text
+primary key 有两个作用，一是约束作用（constraint），用来规范一个存储主键和唯一性，但同时也在此key上建立了一个index；
+
+unique key 也有两个作用，一是约束作用（constraint），规范数据的唯一性，但同时也在这个key上建立了一个index；
+
+foreign key也有两个作用，一是约束作用（constraint），规范数据的引用完整性，但同时也在这个key上建立了一个index；
+
+```
+
+> 可见，mysql的key是同时具有constraint和index的意义，这点和其他数据库表现的可能有区别。（至少在Oracle上建立外键，不会自动建立index），因此创建key也有如下几种方式：
+<br>（1）在字段级以key方式建立， 如 create table t (id int not null primary key);
+<br>（2）在表级以constraint方式建立，如create table t(id int, CONSTRAINT pk_t_id PRIMARY key (id));
+<br>（3）在表级以key方式建立，如create table t(id int, primary key (id));
+  其它key创建类似，但不管那种方式，既建立了constraint，又建立了index，只不过index使用的就是这个constraint或key。
+
+> .index是数据库的物理结构，它只是辅助查询的，它创建时会在另外的表空间（mysql中的innodb表空间）以一个类似目录的结构存储。索引要分类的话，分为前缀索引、全文本索引等；
+  因此，索引只是索引，它不会去约束索引的字段的行为（那是key要做的事情）。
+  如，create table t(id int, index inx_tx_id  (id));
+
 
 ## explain
-
+select命令添加explain前缀，MySQL将不去执行select命令而是对它进行分析。MySQL将以表格的形式把查询的执行过程和用到的索引等信息列出来。
 ```text
     explain 显示了mysql如何使用索引来处理select语句以及连接表。
     可以帮助选择更好的索引和写出更优化的查询语句。
