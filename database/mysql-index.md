@@ -10,6 +10,7 @@
 - 主键索引 PRIMARY KEY：是一种唯一性的索引，每个表只能有一个主键。
 - 唯一索引 UNIQUE：所有值唯一，值可以为空
 - 普通索引 INDEX：基本的索引类型，值可以为空
+- 组合索引 INDEX
 - 全文索引 FULLTEXT：可以在varchar、char、text类型的列上创建。全文索引不支持中文需要借sphinx(coreseek)或迅搜<、code>技术处理中文
 
 ## 索引的命名
@@ -29,16 +30,19 @@
                       [UNIQUE | FULLTEXT | SPATIAL] INDEX | KEY
                       [索引名](字段名1 [(长度)] [ASC | DESC])
     ); 
+    CREATE TABLE table_name[col_name data type] 
+                      [unique|fulltext][index|key]
+                      [index_name](col_name[length])[asc|desc]
 ```
-- UNIQUE： 可选。表示索引为唯一性索引。
-- FULLTEXT： 可选。表示索引为全文索引。
-- SPATIAL： 可选。表示索引为空间索引。
-- INDEX和KEY： 用于指定字段为索引，两者选择其中之一就可以了，作用是一样的。
-- 索引名： 可选。给创建的索引取一个新名称。
-- 字段名1： 指定索引对应的字段的名称，该字段必须是前面定义好的字段。
-- 长度： 可选。指索引的长度，必须是字符串类型才可以使用。
-- ASC： 可选。表示升序排列。
-- DESC： 可选。表示降序排列。
+- UNIQUE： 可选参数。表示索引为唯一性索引。
+- FULLTEXT： 可选参数。表示索引为全文索引。
+- SPATIAL： 可选参数。表示索引为空间索引。
+- INDEX和KEY： 同义词，两者作用相同。用于指定字段为索引。
+- index_name 索引名： 可选参数。给创建的索引取一个新名称。如果不指定，默认col_name。
+- col_name 字段名1： 需要创建索引的字段列。该字段必须是前面定义好的字段。
+- length 长度： 可选参数。指索引的长度，只有字符串类型的字段才能指定索引长度。
+- ASC： 可选参数。表示升序排列。
+- DESC： 可选参数。表示降序排列。
 
 
 #### 查看表中已经存在的索引
@@ -74,16 +78,17 @@ mysql>ALTER TABLE `table_name` ADD UNIQUE (`column`)
 
 ```sql
 
-create INDEX index_name on table_name (`column`) ;
+create INDEX index_name on table_name (`column`(length)) ;
 
 -- 或者
-mysql>ALTER TABLE `table_name` ADD INDEX index_name (`column`)
+mysql>ALTER TABLE `table_name` ADD INDEX index_name (`column`(length))
 
 ```
 
 ##### **全文索引 FULLTEXT**
 
 > MySQL从3.23.23版本开始全面支持全文索引和全文检索。fulltext索引仅可用于MyISAM表。
+> <br> 主要用来查找文本中的关键字，而不是直接与索引中的值相比较。fulltext索引跟其它索引大不相同，它更像是一个搜索引擎，而不是简单的where语句的参数匹配。fulltext索引配合match against操作使用，而不是一般的where语句加like。它可以在create table，alter table ，create index使用，不过目前只有char、varchar，text 列上可以创建全文索引。值得一提的是，在数据量较大时候，现将数据放入一个没有全局索引的表中，然后再用CREATE index创建fulltext索引，要比先为一张表建立fulltext然后再将数据写入的速度快很多。
 
 ```sql
 mysql>ALTER TABLE `table_name` ADD FULLTEXT (`column`)
@@ -161,6 +166,9 @@ like "%XX%" 不会使用索引，like "XX%" 可以使用索引。
   理论上每张表的索引最多可创建16个索引。 
 ```
 
+#### 不要在列上进行计算
+这会导致索引失效，而进行全表扫描。
+
 #### key和index的区别
 > key 是数据库的物理结构，它包含两层意义，一是约束（偏重于约束和规范数据库的结构完整性），二是索引（辅助查询用的）。
 包括primary key, unique key, foreign key 等。
@@ -186,8 +194,10 @@ foreign key也有两个作用，一是约束作用（constraint），规范数�
 
 
 ## explain
-select命令添加explain前缀，MySQL将不去执行select命令而是对它进行分析。MySQL将以表格的形式把查询的执行过程和用到的索引等信息列出来。
-```text
-    explain 显示了mysql如何使用索引来处理select语句以及连接表。
-    可以帮助选择更好的索引和写出更优化的查询语句。
-```
+
+> select命令添加explain前缀，MySQL将不去执行select命令而是对它进行分析。MySQL将以表格的形式把查询的执行过程和用到的索引等信息列出来。
+> explain 显示了mysql如何使用索引来处理select语句以及连接表。
+> 可以帮助选择更好的索引和写出更优化的查询语句。
+
+
+ [返回MySQL](mysql.md)
