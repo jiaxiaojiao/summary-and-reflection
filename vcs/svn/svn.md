@@ -2,7 +2,7 @@
 
 ## 使用 TortoiseSVN
 
-- [右键显示SVN菜单项](TortoiseSVN/TortoiseSVN-use.md)
+- [右键显示SVN菜单项](TortoiseSVN-Settings.md)
 
 ## 其他
 

@@ -61,7 +61,7 @@
 
 ## [VCS 版本控制系统](./vcs/vcs.md)
 
-- [**Git**](./vcs/git.md)
+- [**Git**](vcs/git/git.md)
 
 - SVN
 
