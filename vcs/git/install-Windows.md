@@ -1,5 +1,7 @@
 # 安装Git（Windows环境）
 
+> 从Git官网下载安装程序
+
 ## 一、 下载
 ```text
 地址：https://git-scm.com/download
