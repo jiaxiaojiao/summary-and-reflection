@@ -41,6 +41,8 @@ Add the Lombok IntelliJ plugin to add lombok support for IntelliJ:
 
 
 ## 常用的注解
+https://projectlombok.org/features/all
+
 ```text
 @Data
     注解在类上
