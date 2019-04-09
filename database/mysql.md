@@ -24,6 +24,8 @@
 
 - [SQL查询字段如果为空返回0](./sql-null.md)
 
+- [SQL长度](./sql-length.md)
+
 ## MySQL 应用
 
 - [MySQL 查询用户连续登陆天数](./mysql-incessancydays.md)

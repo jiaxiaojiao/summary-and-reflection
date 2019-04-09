@@ -1,5 +1,5 @@
 # IDE 
-**集成开发环境**
+> Integrated Development Environment  **集成开发环境**
 
 ### IntelliJ IDEA
 
