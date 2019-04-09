@@ -6,6 +6,9 @@
 
 [Github地址](https://github.com/mplushnikov/lombok-intellij-plugin)
 
+> 官网介绍： Project Lombok makes java a spicier language by adding 'handlers' that know how to build and compile simple, boilerplate-free, not-quite-java code.
+大致意思是Lombok通过增加一些“处理程序”让代码更加简洁。
+
 >Lombok 是一种 Java™ 实用工具。
  通过简单注解来精简代码达到消除冗长代码的目的，尤其是对于简单的 Java 对象（POJO）。
  
@@ -48,13 +51,17 @@ https://projectlombok.org/features/all
     注解在类上
     提供类所有属性的 getting 和 setting 方法，
     此外还提供了equals、canEqual、hashCode、toString 方法
+    
+    如果只是使用@Data注解生成getter setter，建议使用@Getter @Setter注解替换@Data注解。
         
 @Setter
-    注解在属性上
+    注解在类或属性上
     为属性提供 setting 方法
+    在使用该注解时，会默认生成一个无参构造 和 对应的setter方法。
 @Getter
-    注解在属性上
+    注解在类或属性上
     为属性提供 getting 方法
+    在使用该注解时，会默认生成一个无参构造 和 对应的getter方法。
 @Slf4j
     在需要打印日志的类中使用，
     当项目中使用了slf4j打印日志框架时使用该注解，会简化日志的打印流程，
@@ -82,7 +89,8 @@ https://projectlombok.org/features/all
 @SneakyThrows
     等同于try/catch 捕获异常
 @NonNull
-    如果给参数加个这个注解 参数为null会抛出空指针异常
+    如果给参数加个这个注解 参数为null会抛出空指针异常。
+    该注解会默认生成无参构造函数。
 @RequiredArgsConstructor
     会生成一个包含常量（final），和标识了@NotNull的变量的构造方法。
 @Value
@@ -114,6 +122,32 @@ https://projectlombok.org/features/all
 ```
 
 ### 注解详情示例
+
+#### @Log
+> 官网说明文档：https://projectlombok.org/features/log
+
+> 注解在类上。默认情况下，记录器的主题（或名称）将是使用注释进行@Log注释的类的类名称。这可以通过指定topic参数来定制。例如：@XSlf4j(topic="reporting")。
+
+> 这是一个泛型注解，具体有多种形式：
+```text
+//@CommonsLog
+private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(LogExample.class);
+//@JBossLog
+private static final org.jboss.logging.Logger log = org.jboss.logging.Logger.getLogger(LogExample.class);
+//@Log
+private static final java.util.logging.Logger log = java.util.logging.Logger.getLogger(LogExample.class.getName());
+//@Log4j
+private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(LogExample.class);
+//@Log4j2
+private static final org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(LogExample.class);
+//@Slf4j
+private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LogExample.class);
+//@XSlf4j
+private static final org.slf4j.ext.XLogger log = org.slf4j.ext.XLoggerFactory.getXLogger(LogExample.class);
+
+```
+
+
 
 #### @Cleanup
 自动化关闭流，相当于 jdk1.7 种的 try with resource
@@ -178,3 +212,13 @@ public void foo() {
 ```
 
 ## 其他
+参考：
+```text
+https://projectlombok.org/features/
+
+https://github.com/rzwitserloot/lombok?spm=a2c4e.11153940.blogcont59972.5.2aeb6d32hayLHv
+
+https://www.zhihu.com/question/42348457
+
+https://blog.csdn.net/ghsau/article/details/52334762
+```
