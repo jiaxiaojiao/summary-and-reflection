@@ -1,3 +1,0 @@
-# java.util.Map
-
-#### ConcurrentHashMap
